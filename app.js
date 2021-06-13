@@ -4,6 +4,7 @@
 //     express-ejs-layouts
 //     mongoose
 //     body-parser - to access different input elements from server
+//     multer - it allows to use files -- here for uploading file
 
 
 // Checking the environment is prod or dev
@@ -20,6 +21,7 @@ const bodyParser = require('body-parser')
 
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
+const bookRouter = require('./routes/books')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -37,5 +39,6 @@ db.once('open', () => console.log("Connected to Mongoose"))
 
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use('/books', bookRouter)
 
 app.listen(process.env.PORT || 3000)
